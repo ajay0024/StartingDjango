@@ -1,0 +1,15 @@
+
+.main{
+  display: flex;
+  justify-content: space-between;
+}
+.main_body{
+  width: 70%;
+  background: #eeeeee;
+  padding: 0.5rem;
+}
+.sidebar{
+  width: 25%;
+  background: #eeeeee;
+  padding: 0.5rem;
+}
