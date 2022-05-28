@@ -6,6 +6,11 @@
 {%endblock%}
 
 {%block body_block%}
+  {%if user.is_authenticated%}
+    Hi {{user.username|title}}
+  {%else%}
+    Hello Bro!
+  {%endif%}
   <h1>Most liked Categories</h1>
   <div>
     <ul>
