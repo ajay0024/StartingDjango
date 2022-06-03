@@ -7,35 +7,42 @@
 
 {%block body_block%}
   {%if user.is_authenticated%}
-    Hi {{user.username|title}}
+    <h1>Hi {{user.username|title}}</h1>
   {%else%}
     Hello Bro!
   {%endif%}
-  <h1>Most liked Categories</h1>
-  <div>
-    <ul>
-      {% for category in categories %}
-      <li>
-        <a href="{% url 'rango:show_category' category.slug%}">{{ category.name }}</a>
-      </li>
-      {%empty%}
-        <strong>There are no categories present.</strong>
-      {% endfor %}
-    </ul>
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Most liked Categories</h2>
+      <div>
+        <ul class="list-group">
+          {% for category in categories %}
+          <li class="list-group-item">
+            <a href="{% url 'rango:show_category' category.slug%}">{{ category.name }}</a>
+          </li>
+          {%empty%}
+            <strong>There are no categories present.</strong>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <h2>Most viewed Pages</h2>
+      <div>
+        <ul class="list-group">
+          {% for page in pages %}
+          <li class="list-group-item">
+            <a href="{{page.url}}">{{ page.title }}</a>
+          </li>
+          {%empty%}
+            <strong>There are no pages present.</strong>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
-  <h1>Most viewed Pages</h1>
-  <div>
-    <ul>
-      {% for page in pages %}
-      <li>
-        <a href="{{page.url}}">{{ page.title }}</a>
-      </li>
-      {%empty%}
-        <strong>There are no pages present.</strong>
-      {% endfor %}
-    </ul>
 
-  </div>
+
   <div>
     <img src="{% static "images/rango.jpeg" %}" alt="Picture of Rango" />
   </div>

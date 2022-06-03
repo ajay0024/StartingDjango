@@ -8,6 +8,8 @@
   background: #eeeeee;
   padding: 0.5rem;
   height: 70vh;
+  overflow-y: scroll;
+
 }
 .sidebar{
   width: 25%;

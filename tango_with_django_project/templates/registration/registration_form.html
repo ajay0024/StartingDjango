@@ -1,0 +1,51 @@
+{%extends 'rango/base.html'%}
+{%load static%}
+
+{% block title_block%}
+  Register
+{%endblock%}
+
+{%block body_block%}
+
+<div class="form-signin w-100 m-auto">
+  <form class="" action="." method="post" id="registeration_form">
+    <h1 class="h3 mb-3 fw-normal text-center">Register Here</h1>
+    {%csrf_token%}
+    {%for hidden in form.hidden_fields%}
+      {{hidden}}
+    {%endfor %}
+
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="id_username" placeholder="Username" name="username" maxlength="150" required>
+      <label for="floatingInput">Please enter your username</label>
+    </div>
+    <div class="form-floating">
+      <input type="email" class="form-control" id="id_email" placeholder="Email" name="email" required>
+      <label for="floatingInput">Please enter your email</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="id_password1" placeholder="Password" name="password1" required>
+      <label for="floatingInput">Please enter Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="id_password2" placeholder="Password2" name="password2" required>
+      <label for="floatingInput">Confirm your password</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+  </form>
+  {% for field in form.visible_fields %}
+    {{ field.errors }}<br/>
+  {% endfor %}
+</div>
+
+
+    <!-- <h1>Register Here</h1>
+    <div class="">
+      <form class="" action="." method="post" id="login_form">
+        {#{%csrf_token%}#}
+        {#{{form.as_p}}#}
+        <input type="submit" name="submit" value="Login">
+      </form>
+    </div> -->
+{%endblock%}

@@ -6,7 +6,32 @@
 {%endblock%}
 
 {%block body_block%}
-  <h1>Add a Page</h1>
+
+<div class="form-signin w-100 m-auto">
+  <form class="" action="{% url 'rango:add_page' category_name_slug=category.slug%}" method="post" id="category_form">
+    <h1 class="h3 mb-3 fw-normal">Add a Page</h1>
+    {%csrf_token%}
+    {%for hidden in form.hidden_fields%}
+      {{hidden}}
+    {%endfor %}
+    <div class="form-floating">
+      <input type="text" class="form-control" id="id_title" placeholder="Category Name" name="title" maxlength="128" required>
+      <label for="floatingInput">Please enter Title of the Page</label>
+    </div>
+    <div class="form-floating">
+      <input type="url" class="form-control" id="id_url" placeholder="Page Name" name="url" maxlength="200" required>
+      <label for="floatingInput">Please enter Url of Page</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Create Page</button>
+  </form>
+  {% for field in form.visible_fields %}
+    {{ field.errors }}<br/>
+  {% endfor %}
+
+</div>
+
+
+  <!-- <h1>Add a Page</h1>
   <div class="">
     <form class="" action="{% url 'rango:add_page' category_name_slug=category.slug%}" method="post" id="page_form">
       {%csrf_token%}
@@ -21,5 +46,5 @@
       {% endfor %}
       <input type="submit" name="submit" value="Create Page">
     </form>
-  </div>
+  </div> -->
 {%endblock%}
